@@ -1,2 +1,2 @@
 # friendly-pancake
-Project repository
+A repository of files for the project.
