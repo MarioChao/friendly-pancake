@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html style = "background-color: #ffdede;">
+    <head>
+        <title>Friendly Pancake 🥞</title>
+    </head>
+    <body>
+        <div class = "heading">
+            <h1>Welcome!</h1>
+            <p>Here's a Friendly Pancake?</p>
+            <p>🥞</p>
+            <hr>
+        </div>
+        <div class = "new year">
+            <h2>New Year Countdown!</h2>
+            <p id = "countdown">???</p>
+        </div>
+        <script>
+            let d = new Date();
+            let newYear = new Date(d.getFullYear() + 1, 0, 1, 0, 0, 0, 0);
+            let secLeft, displayStr;
+            let secPerMin = 60;
+            let secPerHour = secPerMin * 60;
+            let secPerDay = secPerHour * 24;
+            function writeTime() {
+                // Get seconds till New Year
+                d = new Date();
+                secLeft = (newYear.getTime() - d.getTime()) / 1000;
+                // Convert it to days, hours, etc.
+                displayStr = parseInt(secLeft / secPerDay).toString() + " days, " +
+                    parseInt(secLeft % secPerDay / secPerHour) + " hours, " +
+                    parseInt(secLeft % secPerHour / secPerMin) + " minutes, " +
+                    parseInt(secLeft % secPerMin) + " seconds, " +
+                    parseInt(secLeft * 1000 % 1000) + " milliseconds left till New Year";
+                document.getElementById("countdown").innerText = displayStr;
+                setTimeout(writeTime, 5);
+            }
+            writeTime();
+        </script>
+    </body>
+</html>
