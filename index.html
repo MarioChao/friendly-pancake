@@ -13,26 +13,35 @@
         </div>
         <div class = "new year">
             <h2>New Year Countdown!</h2>
-            <p id = "countdown">???</p>
+            <p id = "countdown year begin">???</p>
+            <p id = "countdown new year">???</p>
         </div>
         <script>
             let d = new Date();
-            let newYear = new Date(d.getFullYear() + 1, 0, 1, 0, 0, 0, 0);
-            let secLeft, displayStr;
+            let yearBegin = new Date(d.getFullYear(), 0);
+            let newYear = new Date(d.getFullYear() + 1, 0);
             let secPerMin = 60;
             let secPerHour = secPerMin * 60;
             let secPerDay = secPerHour * 24;
             function writeTime() {
-                // Get seconds till New Year
+                // Get seconds till Year Begin
                 d = new Date();
-                secLeft = (newYear.getTime() - d.getTime()) / 1000;
+                let secLeft = (d.getTime() - yearBegin.getTime()) / 1000;
                 // Convert it to days, hours, etc.
-                displayStr = parseInt(secLeft / secPerDay).toString() + " days, " +
+                let displayStrYearBegin = parseInt(secLeft / secPerDay).toString() + " days, " +
+                    parseInt(secLeft % secPerDay / secPerHour) + " hours, " +
+                    parseInt(secLeft % secPerHour / secPerMin) + " minutes, " +
+                    parseInt(secLeft % secPerMin) + " seconds, " +
+                    parseInt(secLeft * 1000 % 1000) + " milliseconds since Year Begin";
+                // Time till New Year
+                secLeft = (newYear.getTime() - d.getTime()) / 1000;
+                let displayStrNewYear = parseInt(secLeft / secPerDay).toString() + " days, " +
                     parseInt(secLeft % secPerDay / secPerHour) + " hours, " +
                     parseInt(secLeft % secPerHour / secPerMin) + " minutes, " +
                     parseInt(secLeft % secPerMin) + " seconds, " +
                     parseInt(secLeft * 1000 % 1000) + " milliseconds left till New Year";
-                document.getElementById("countdown").innerText = displayStr;
+                document.getElementById("countdown year begin").innerText = displayStrYearBegin;
+                document.getElementById("countdown new year").innerText = displayStrNewYear;
                 setTimeout(writeTime, 5);
             }
             writeTime();
