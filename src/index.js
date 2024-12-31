@@ -50,13 +50,20 @@ function initializeBody() {
 	document.body.style.color = "black";
 }
 
-function changeBackgroundState() {
+function onNewYear() {
 	if (backgroundState == 0) {
+		// Change background
 		document.body.style.backgroundColor = "#FFDEDE00";
 		let navbar = document.getElementsByClassName("navbar")[0];
 		navbar.style.backgroundColor = "#FFCECE00";
 		navbar.style.borderBottomColor = "#00000030";
 		document.body.style.color = "white";
+
+		// Show text
+		let newYearText = document.getElementById("happy-new-year");
+		newYearText.removeAttribute("hidden");
+		document.getElementById("new-year-number").innerText = nowDate.getFullYear();
+
 		backgroundState = 1;
 	}
 }
@@ -93,7 +100,7 @@ function writeTime() {
 	let msSinceNewYear = nowDate.getTime() - newYear.getTime();
 	let msSinceYearBegin = nowDate.getTime() - yearBegin.getTime();
 	if (0 <= msSinceNewYear || msSinceYearBegin / 1000 / secPerDay <= 12) {
-		changeBackgroundState();
+		onNewYear();
 	}
 }
 
