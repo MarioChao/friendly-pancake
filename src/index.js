@@ -62,7 +62,6 @@ function changeBackgroundState() {
 function writeTime() {
 	// Get seconds till Year Begin
 	nowDate = new Date();
-	// nowDate = newYear;
 
 	// Convert it to days, hours, etc.
 	let dateInterval = convertSeconds((nowDate.getTime() - yearBegin.getTime()) / 1000);
@@ -90,7 +89,8 @@ function writeTime() {
 
 	// Check new year
 	let msSinceNewYear = nowDate.getTime() - newYear.getTime();
-	if (0 <= msSinceNewYear && msSinceNewYear / 1000 / secPerDay <= 12) {
+	let msSinceYearBegin = nowDate.getTime() - yearBegin.getTime();
+	if (0 <= msSinceNewYear || msSinceYearBegin / 1000 / secPerDay <= 12) {
 		changeBackgroundState();
 	}
 }
