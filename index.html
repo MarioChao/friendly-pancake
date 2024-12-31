@@ -1,50 +1,30 @@
 <!DOCTYPE html>
 
-<html style="background-color: #ffdede;">
+<html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Friendly Pancake 🥞</title>
+        <link rel="stylesheet" href="https://mariochao.github.io/src/style-no-hover.css">
+		<link rel="stylesheet" href="https://mariochao.github.io/dream-game/src/assets/styles/navigation-bar.css">
+        <script src="./src/index.js"></script>
+        <link rel="prefetch" href="./src/HNY2025.png">
     </head>
-    <body>
+    <body class="navbar-body" style="background-color: #FFDEDEFF; font-family: Verdana;">
+        <!-- Navigation bar -->
+		<div class="navbar" style="background-color: #FFCECEFF; text-align: center; border-bottom-color: #000000FF;">
+			<h1>Friendly Pancake</h1>
+		</div>
+        <!-- Welcome -->
         <div class="heading">
             <h1>Welcome!</h1>
-            <p>Here's a Friendly Pancake?</p>
-            <p>🥞</p>
-            <hr>
+            
         </div>
-        <div class="new year">
-            <h2>New Year Countdown!</h2>
-            <p id="countdown year begin">???</p>
-            <p id="countdown new year">???</p>
+        <hr color="#CF9E9E" style="opacity: 0.5;">
+        <!-- Year Begin Timer & New Year Countdown -->
+        <div class="new-year">
+            <h2>Year Begin & New Year Countdown!</h2>
+            <p id="countdown-year-begin">???</p>
+            <p id="countdown-new-year">???</p>
         </div>
-        <script>
-            let d = new Date();
-            let yearBegin = new Date(d.getFullYear(), 0);
-            let newYear = new Date(d.getFullYear() + 1, 0);
-            let secPerMin = 60;
-            let secPerHour = secPerMin * 60;
-            let secPerDay = secPerHour * 24;
-            function writeTime() {
-                // Get seconds till Year Begin
-                d = new Date();
-                let secLeft = (d.getTime() - yearBegin.getTime()) / 1000;
-                // Convert it to days, hours, etc.
-                let displayStrYearBegin = parseInt(secLeft / secPerDay).toString() + " days, " +
-                    parseInt(secLeft % secPerDay / secPerHour) + " hours, " +
-                    parseInt(secLeft % secPerHour / secPerMin) + " minutes, " +
-                    parseInt(secLeft % secPerMin) + " seconds, " +
-                    parseInt(secLeft * 1000 % 1000) + " milliseconds since Year Begin";
-                // Time till New Year
-                secLeft = (newYear.getTime() - d.getTime()) / 1000;
-                let displayStrNewYear = parseInt(secLeft / secPerDay).toString() + " days, " +
-                    parseInt(secLeft % secPerDay / secPerHour) + " hours, " +
-                    parseInt(secLeft % secPerHour / secPerMin) + " minutes, " +
-                    parseInt(secLeft % secPerMin) + " seconds, " +
-                    parseInt(secLeft * 1000 % 1000) + " milliseconds left till New Year";
-                document.getElementById("countdown year begin").innerText = displayStrYearBegin;
-                document.getElementById("countdown new year").innerText = displayStrNewYear;
-                setTimeout(writeTime, 5);
-            }
-            writeTime();
-        </script>
     </body>
 </html>
