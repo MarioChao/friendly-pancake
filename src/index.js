@@ -42,8 +42,9 @@ function padLeft(inputStr, length, padChar) {
 function initializeBody() {
 	document.body.style.transition = "all 2000ms";
 
+	document.body.style.backgroundColor = "#FFDEDEFF";
 	document.body.style.backgroundImage = "url(./src/HNY2025.png)";
-	document.body.style.backgroundSize = "cover";
+	document.body.style.backgroundSize = "100%";
 	document.body.style.backgroundBlendMode = "lighten";
 	document.body.style.color = "black";
 }
